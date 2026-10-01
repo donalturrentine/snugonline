@@ -41,8 +41,8 @@
   <div class="wrap two-col">
     <div class="card">
       <h2 style="font-size:1.5rem">Send us a message</h2>
-      <p class="hint" style="margin-bottom:20px">This opens your email app with your message filled in. Nothing is stored on this website.</p>
-      <form class="form" action="mailto:flexusersgroup@gmail.com" method="post" enctype="text/plain">
+      <p class="hint" style="margin-bottom:20px">This opens your email app with your message filled in. Nothing is stored on this website. No email app? Write to <a href="mailto:flexusersgroup@gmail.com">flexusersgroup@gmail.com</a>.</p>
+      <form class="form" id="contact-form" action="#" method="get">
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="f-email">Your email</label><input id="f-email" type="email" name="email" autocomplete="email" required></div>
         <div class="field"><label for="f-agency">Agency <span class="hint">(optional)</span></label><input id="f-agency" name="agency" autocomplete="organization"></div>
@@ -86,5 +86,13 @@
   </div>
 </footer>
 <script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
+<script>
+(function(){var f=document.getElementById('contact-form');if(!f)return;
+f.addEventListener('submit',function(e){e.preventDefault();
+var v=function(id){return f.querySelector(id).value.trim()};
+var n=v('#f-name'),em=v('#f-email'),a=v('#f-agency'),m=v('#f-msg');
+var body='Name: '+n+'\r\nEmail: '+em+'\r\nAgency: '+a+'\r\n\r\n'+m;
+window.location.href='mailto:flexusersgroup@gmail.com?subject='+encodeURIComponent('SNUG website message from '+n)+'&body='+encodeURIComponent(body);});})();
+</script>
 </body>
 </html>
